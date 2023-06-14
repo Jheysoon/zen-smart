@@ -26,14 +26,12 @@ function App() {
   }, []);
 
   const handleClick = async () => {
-    await fetch(BASE_URL + "/saveClick", {
+    const response = await fetch(BASE_URL + "/saveClick", {
       method: "POST",
     });
-    //const jsonData = await response.json();
+    const jsonData = await response.json();
 
-    setCount((count) => count + 1);
-
-    //setCount(jsonData.count)
+    setCount(jsonData.count);
   };
 
   return (
