@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import {
+  Button,
+  Container,
+  Typography,
+  Card,
+  CardContent,
+} from "@mui/material";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const fetchData = async () => {};
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleClick = async () => {};
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Container sx={{ width: 200, padding: 2 }}>
+      <Card sx={{ border: "1px solid #355bf9", marginBottom: 1 }}>
+        <CardContent>
+          <Typography style={{ textAlign: "center" }}>0</Typography>
+        </CardContent>
+      </Card>
+
+      <Button
+        variant="contained"
+        fullWidth
+        sx={{
+          backgroundColor: "#096bec",
+          "&:hover": { backgroundColor: "#1742e4" },
+        }}
+        onClick={handleClick}
+      >
+        Click Me!
+      </Button>
+    </Container>
+  );
 }
 
-export default App
+export default App;
