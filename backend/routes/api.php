@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/v1/getCount', 'RecordController@show');
+Route::post('/v1/saveClick', 'RecordController@create');
