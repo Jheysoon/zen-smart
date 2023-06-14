@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -7,20 +7,40 @@ import {
   CardContent,
 } from "@mui/material";
 
+const BASE_URL = "http://localhost/api/v1";
+
 function App() {
-  const fetchData = async () => {};
+  const [count, setCount] = useState(0);
+
+  const fetchData = async () => {
+    const response = await fetch(BASE_URL + "/getCount", {
+      method: "GET",
+    });
+    const jsonData = await response.json();
+
+    setCount(jsonData.count);
+  };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const handleClick = async () => {};
+  const handleClick = async () => {
+    await fetch(BASE_URL + "/saveClick", {
+      method: "POST",
+    });
+    //const jsonData = await response.json();
+
+    setCount((count) => count + 1);
+
+    //setCount(jsonData.count)
+  };
 
   return (
     <Container sx={{ width: 200, padding: 2 }}>
       <Card sx={{ border: "1px solid #355bf9", marginBottom: 1 }}>
         <CardContent>
-          <Typography style={{ textAlign: "center" }}>0</Typography>
+          <Typography style={{ textAlign: "center" }}>{count}</Typography>
         </CardContent>
       </Card>
 
